@@ -30,7 +30,7 @@ class CreateGameService {
       throw StateError('Already creating a game.');
     }
 
-    final socket = ref.read(socketClientProvider);
+    final socket = ref.read(socketServiceProvider);
     final lobbyRepo = ref.read(lobbyRepositoryProvider);
     final (stream, readyStream) = socket.connect(Uri(path: '/lobby/socket/v5'));
     final completer = Completer<GameFullId>();
@@ -79,7 +79,7 @@ class CreateGameService {
     await Result.release(
       lobbyRepo.createSeek(
         seek,
-        sri: ref.read(socketClientProvider).sri,
+        sri: ref.read(socketServiceProvider).sri,
       ),
     );
   }

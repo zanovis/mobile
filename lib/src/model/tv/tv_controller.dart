@@ -40,7 +40,7 @@ class TvController extends _$TvController {
     return _connectWebsocket(initialGame);
   }
 
-  SocketClient get _socket => ref.read(socketClientProvider);
+  SocketService get _socket => ref.read(socketServiceProvider);
   TvRepository get _tvRepository => ref.read(tvRepositoryProvider);
   SoundService get _soundService => ref.read(soundServiceProvider);
 
